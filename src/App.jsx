@@ -8,6 +8,7 @@ import P3Menu from './P3Menu'
 import VideoPage from './VideoPage'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
+import AboutMe from './AboutMe'
 import './App.css'
 
 function MenuScreen() {
@@ -29,7 +30,7 @@ function AnimatedRoutes() {
           <PageTransition><MenuScreen /></PageTransition>
         } />
         <Route path="/about" element={
-          <PageTransition><VideoPage src={main1} /></PageTransition>
+          <PageTransition><AboutMe /></PageTransition>
         } />
         <Route path="/resume" element={
           <PageTransition><VideoPage src={main2} /></PageTransition>
