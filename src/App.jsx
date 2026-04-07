@@ -1,23 +1,33 @@
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import menuVideo from './assets/Mainn.mp4'
+import menuVideo from './assets/main1.mp4'
 import main1 from './assets/main1.mp4'
-import main2 from './assets/main2.mp4'
-import main3 from './assets/main3.mp4'
+import main2 from './assets/main1.mp4'
+import main3 from './assets/main1.mp4'
 import P3Menu from './P3Menu'
 import VideoPage from './VideoPage'
 import ResumePage from './ResumePage'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
 import AboutMe from './AboutMe'
+import SideProjectsPage from './SideProjectsPage'
 import './App.css'
 
 function MenuScreen() {
   const navigate = useNavigate()
+
+  const handleNavigate = (page) => {
+    if (page === 'github') {
+      window.open('https://github.com/JAGR1792', '_blank', 'noopener,noreferrer')
+      return
+    }
+    navigate(`/${page}`)
+  }
+
   return (
     <div id="menu-screen">
       <video src={menuVideo} autoPlay loop muted playsInline />
-      <P3Menu onNavigate={(page) => navigate(`/${page}`)} />
+      <P3Menu onNavigate={handleNavigate} />
     </div>
   )
 }
@@ -38,6 +48,9 @@ function AnimatedRoutes() {
         } />
         <Route path="/socials" element={
           <PageTransition variant="socials"><Socials /></PageTransition>
+        } />
+        <Route path="/sideproj" element={
+          <PageTransition><SideProjectsPage /></PageTransition>
         } />
       </Routes>
     </AnimatePresence>

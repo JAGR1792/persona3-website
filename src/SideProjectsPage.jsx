@@ -1,0 +1,238 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import bgVideo from "./assets/main1.mp4";
+
+const ITEMS = [
+  {
+    id: "pokedex",
+    title: "POKEDEX",
+    stack: "Python / API",
+    summary: "Proyecto de exploracion de datos Pokemon con enfoque backend.",
+    href: "https://github.com/JAGR1792/Pokedex",
+  },
+  {
+    id: "didasko",
+    title: "DIDASKO",
+    stack: "Python / Backend",
+    summary: "Proyecto orientado a logica, estructura y crecimiento modular.",
+    href: "https://github.com/JAGR1792/Didasko",
+  },
+  {
+    id: "micelio",
+    title: "MICELIO",
+    stack: "C++ / Systems",
+    summary: "Proyecto para practicar arquitectura, rendimiento y control fino.",
+    href: "https://github.com/JAGR1792/Micelio",
+  },
+  {
+    id: "credits",
+    title: "SPECIAL THANKS",
+    stack: "Original inspiration",
+    summary: "Gracias a blairxu13 por el repo base que sirvio como punto de partida.",
+    href: "https://github.com/blairxu13/persona3-website/projects",
+  },
+];
+
+export default function SideProjectsPage() {
+  const navigate = useNavigate();
+  const [active, setActive] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "ArrowUp") setActive((i) => Math.max(0, i - 1));
+      if (e.key === "ArrowDown") setActive((i) => Math.min(ITEMS.length - 1, i + 1));
+      if (e.key === "Enter") window.open(ITEMS[active].href, "_blank", "noopener,noreferrer");
+      if (e.key === "ArrowLeft" || e.key === "Escape" || e.key === "Backspace") navigate(-1);
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [active, navigate]);
+
+  return (
+    <div id="menu-screen">
+      <video src={bgVideo} autoPlay loop muted playsInline />
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+
+        .sp-shell {
+          position: absolute;
+          inset: 0;
+          z-index: 10;
+          display: grid;
+          grid-template-columns: 48% 52%;
+          gap: 20px;
+          padding: 6vh 3vw;
+        }
+
+        .sp-left {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .sp-title {
+          font-family: 'Anton', sans-serif;
+          font-size: 72px;
+          color: #f4fbff;
+          line-height: 0.92;
+          letter-spacing: 1px;
+          text-shadow: 0 2px 0 rgba(0,0,0,0.3);
+          margin-bottom: 8px;
+          opacity: 0;
+          transform: translateX(-24px);
+          transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        .sp-title.mounted {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .sp-item {
+          position: relative;
+          min-height: 94px;
+          background: rgba(8, 17, 76, 0.94);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+          box-shadow: inset 0 0 0 1px rgba(159, 245, 255, 0.14), 0 8px 16px rgba(0, 0, 0, 0.35);
+          padding: 14px 16px;
+          cursor: pointer;
+          opacity: 0;
+          transform: translateX(-36px);
+          transition: transform 0.24s ease, background 0.24s ease, opacity 0.4s ease;
+        }
+        .sp-item.mounted {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .sp-item.active {
+          background: rgba(255, 255, 255, 0.97);
+          transform: translateX(6px);
+        }
+
+        .sp-item-title {
+          font-family: 'Anton', sans-serif;
+          font-size: 42px;
+          line-height: 0.9;
+          color: #9ef5ff;
+        }
+        .sp-item.active .sp-item-title {
+          color: #111;
+        }
+
+        .sp-item-stack {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 26px;
+          letter-spacing: 1.4px;
+          color: #d8fcff;
+          margin-top: 4px;
+        }
+        .sp-item.active .sp-item-stack {
+          color: #0f1a3f;
+        }
+
+        .sp-right {
+          position: relative;
+          background: linear-gradient(180deg, rgba(7, 18, 83, 0.96) 0%, rgba(4, 10, 48, 0.96) 100%);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+          box-shadow: inset 0 0 0 1px rgba(165, 246, 255, 0.16), 12px 12px 0 rgba(0, 4, 28, 0.5);
+          padding: 24px;
+          overflow: hidden;
+        }
+
+        .sp-tag {
+          display: inline-block;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 24px;
+          letter-spacing: 1.6px;
+          background: #8ef5ff;
+          color: #07153a;
+          padding: 4px 10px;
+          clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+        }
+
+        .sp-right-title {
+          font-family: 'Anton', sans-serif;
+          font-size: 64px;
+          line-height: 0.92;
+          color: #f1fcff;
+          margin-top: 16px;
+        }
+
+        .sp-right-summary {
+          margin-top: 16px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 30px;
+          line-height: 1.05;
+          letter-spacing: 1px;
+          color: #c8f8ff;
+        }
+
+        .sp-link {
+          margin-top: 24px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 28px;
+          letter-spacing: 1.2px;
+          color: #fff;
+          background: #cb1732;
+          display: inline-flex;
+          align-items: center;
+          padding: 6px 12px;
+          clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        }
+
+        .sp-footer {
+          position: fixed;
+          right: 28px;
+          bottom: 20px;
+          z-index: 20;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 4px;
+          font-family: 'Bebas Neue', sans-serif;
+          color: rgba(255,255,255,0.7);
+          letter-spacing: 2px;
+          font-size: 12px;
+        }
+      `}</style>
+
+      <div className="sp-shell">
+        <div className="sp-left">
+          <div className={`sp-title${mounted ? " mounted" : ""}`}>PROJECT LOG</div>
+          {ITEMS.map((item, index) => (
+            <div
+              key={item.id}
+              className={`sp-item${active === index ? " active" : ""}${mounted ? " mounted" : ""}`}
+              style={{ transitionDelay: `${index * 55}ms` }}
+              onMouseEnter={() => setActive(index)}
+              onClick={() => window.open(item.href, "_blank", "noopener,noreferrer")}
+            >
+              <div className="sp-item-title">{item.title}</div>
+              <div className="sp-item-stack">{item.stack}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="sp-right">
+          <div className="sp-tag">NEW SECTION</div>
+          <div className="sp-right-title">{ITEMS[active].title}</div>
+          <div className="sp-right-summary">{ITEMS[active].summary}</div>
+          <div className="sp-link">OPEN LINK: {ITEMS[active].href.replace("https://", "")}</div>
+        </div>
+      </div>
+
+      <div className="sp-footer">
+        <div>UP / DOWN SELECT</div>
+        <div>ENTER OPEN</div>
+        <div>ESC BACK</div>
+      </div>
+    </div>
+  );
+}
