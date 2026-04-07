@@ -29,15 +29,27 @@ body {
   height: 100vh;
 }
 
-.bgm-toggle {
+.bgm-panel {
   position: fixed;
   left: 20px;
   bottom: 20px;
   z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(7, 8, 24, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 10px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  backdrop-filter: blur(2px);
+}
+
+.bgm-toggle {
   border: 1px solid rgba(255, 255, 255, 0.45);
   background: rgba(8, 10, 26, 0.86);
   color: #d8f7ff;
-  padding: 8px 12px;
+  padding: 8px 10px;
+  min-width: 84px;
   font-size: 13px;
   letter-spacing: 1.2px;
   font-weight: 700;
@@ -53,4 +65,35 @@ body {
 .bgm-toggle.on {
   background: rgba(202, 28, 56, 0.94);
   color: #fff;
+}
+
+.bgm-slider-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(143, 244, 255, 0.4);
+  background: rgba(10, 18, 59, 0.8);
+  padding: 6px 8px;
+  min-width: 200px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.bgm-slider-label,
+.bgm-slider-value {
+  color: #d9f8ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  min-width: 28px;
+}
+
+.bgm-slider-value {
+  color: #85f4ff;
+  text-align: right;
+}
+
+.bgm-slider {
+  width: 100%;
+  accent-color: #ca1c38;
+  cursor: pointer;
 }
