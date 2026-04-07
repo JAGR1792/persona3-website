@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import menuVideo from './assets/main1.mp4'
@@ -12,6 +13,43 @@ import Socials from './Socials'
 import AboutMe from './AboutMe'
 import SideProjectsPage from './SideProjectsPage'
 import './App.css'
+
+function BackgroundMusic() {
+  const audioRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const toggleMusic = async () => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    if (isPlaying) {
+      audio.pause()
+      setIsPlaying(false)
+      return
+    }
+
+    try {
+      await audio.play()
+      setIsPlaying(true)
+    } catch {
+      setIsPlaying(false)
+    }
+  }
+
+  return (
+    <>
+      <audio ref={audioRef} loop preload="none" src="/audio/background.mp3" />
+      <button
+        className={`bgm-toggle${isPlaying ? ' on' : ''}`}
+        type="button"
+        onClick={toggleMusic}
+        aria-label={isPlaying ? 'Disable background music' : 'Enable background music'}
+      >
+        {isPlaying ? 'BGM ON' : 'BGM OFF'}
+      </button>
+    </>
+  )
+}
 
 function MenuScreen() {
   const navigate = useNavigate()
@@ -58,5 +96,10 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  return <AnimatedRoutes />
+  return (
+    <>
+      <AnimatedRoutes />
+      <BackgroundMusic />
+    </>
+  )
 }
