@@ -45,8 +45,8 @@ export const SIDE_PROJECT_ITEMS = [
     id: "credits",
     title: "SPECIAL THANKS",
     stack: "Original inspiration",
-    summary: "Gracias a blairxu13 por el repo base que sirvio como punto de partida.",
-    href: "https://github.com/blairxu13/persona3-website/projects",
+    summary: "Gracias a blairxu13 por el repo base que sirvio como punto de partida, base de todo.",
+    href: "https://github.com/blairxu13/persona3-website",
   },
 ];
 
