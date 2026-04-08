@@ -12,7 +12,7 @@ export const PROFILE = {
   displayName: "JAGR1792",
   githubUsername: "JAGR1792",
   githubUrl: "https://github.com/JAGR1792",
-  nameTag: "jagr1792's",
+  nameTag: "Jagr1792's",
   aboutHandle: "@JAGR1792",
 };
 
