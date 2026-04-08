@@ -9,11 +9,11 @@ import mainm from "./assets/mainm.jpeg";
 import mainm2 from "./assets/mainm2.jpeg";
 
 export const PROFILE = {
-  displayName: "SKing25",
-  githubUsername: "SKing25",
-  githubUrl: "https://github.com/SKing25",
-  nameTag: "SKing25's",
-  aboutHandle: "@SKing25",
+  displayName: "JAGR1792",
+  githubUsername: "JAGR1792",
+  githubUrl: "https://github.com/JAGR1792",
+  nameTag: "jagr1792's",
+  aboutHandle: "@JAGR1792",
 };
 
 export const ABOUT_CHAR_IMAGES = [char1, char2, char3];
@@ -179,7 +179,7 @@ export const MENU_ITEMS = [
 
 export const ABOUT_REVEAL_CONTENT = [
   {
-    upper: ["name: SKing25", "location: Colombia", "focus: backend development"],
+    upper: ["name: JAGR1792", "location: Colombia", "focus: backend development"],
     lower: "learning python and c++ | rust: future goal",
   },
   {
