@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-
-const ITEMS = [
-  { id: "about",   label: "ABOUT ME",      page: "about",   fontSize: 80, offsetX: 0,  offsetY: 0,  skew: -6,  skewY: 10  },
-  { id: "resume",  label: "RESUME",        page: "resume",  fontSize: 66, offsetX: 20, offsetY: 8,  skew: -11, skewY: -10 },
-  { id: "github",  label: "GITHUB LINK",   page: "github",  fontSize: 68, offsetX: 8, offsetY: 6,  skew: 0, skewY: -4  },
-  { id: "socials", label: "SOCIALS",       page: "socials", fontSize: 74, offsetX: 16, offsetY: 8,  skew: -3,  skewY: 5   },
-  { id: "sideproj",label: "SIDE PROJECTS", page: "sideproj",fontSize: 56, offsetX: 10, offsetY: 6,  skew: -4,  skewY: 7   },
-];
+import { MENU_ITEMS, PROFILE } from "./siteData";
 
 const CLIP_SHAPES = [
   (w, h) => `polygon(0px 0px, ${w}px ${h * 0.5}px, 0px ${h}px)`,
@@ -34,8 +27,8 @@ export default function P3Menu({ onNavigate }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowUp")   activate(Math.max(0, active - 1));
-      if (e.key === "ArrowDown") activate(Math.min(ITEMS.length - 1, active + 1));
-      if (e.key === "Enter")     onNavigate?.(ITEMS[active].page);
+      if (e.key === "ArrowDown") activate(Math.min(MENU_ITEMS.length - 1, active + 1));
+      if (e.key === "Enter")     onNavigate?.(MENU_ITEMS[active].page);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -216,14 +209,14 @@ export default function P3Menu({ onNavigate }) {
 
       <div className="p3-overlay">
         <div className="p3-name-tag">
-          <span>jagr1792's</span>
+          <span>{PROFILE.nameTag}</span>
           <span>persona</span>
         </div>
         <div className="p3-stripe" />
         <div className="p3-stripe2" />
 
         <nav className="p3-menu">
-          {ITEMS.map((item, i) => {
+          {MENU_ITEMS.map((item, i) => {
             const isActive = active === i;
             const dist = Math.abs(i - active);
             const opacity = isActive ? 1 : Math.max(0.5, 1 - dist * 0.2);

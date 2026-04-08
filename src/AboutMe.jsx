@@ -1,75 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import char1 from "./assets/char1.png";
-import char2 from "./assets/char2.png";
-import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main1.mp4";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
-import mainm from "./assets/mainm.jpeg";
-import mainm2 from "./assets/mainm2.jpeg";
-import mainf from "./assets/mainf.jpeg";
+import { ABOUT_ITEMS, ABOUT_REVEAL_CONTENT, ABOUT_CHAR_IMAGES, ABOUT_MAIN_IMAGES } from "./siteData";
 
-const CHARS = [char1, char2, char3];
-const MAIN_IMAGES = [mainm, mainm2, mainf];
-
-const REVEAL_CONTENT = [
-  {
-    upper: ["name: JARG1792", "location: Colombia", "focus: backend development"],
-    lower: "learning python and c++ | rust: future goal",
-  },
-  {
-    upper: [
-      "I debug better at 3am.",
-      "I code with lo-fi almost every session.",
-      "I compete in CCPL and enjoy problem solving.",
-    ],
-    lower: "yes, coffee is still required",
-  },
-  {
-    upper: [
-      "Born for backend, forced into frontend.",
-      "Main stack in progress: Python and C++.",
-      "Rust is part of my future roadmap.",
-      "Special thanks to blairxu13 for the original repo inspiration.",
-      "Favorite fuel: coffee + code.",
-    ],
-    lower: "github: github.com/JAGR1792",
-  },
-];
+const ITEMS = ABOUT_ITEMS;
 
 const ROLES = [
   { text: "LEADER", color: "#e8c100", bg: "rgba(232,193,0,0.12)", border: "rgba(232,193,0,0.5)" },
   { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
   { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
-];
-
-const ITEMS = [
-  {
-    id: "about", label: "ABOUT ME", handle: "@JARG1792", href: "https://github.com/JAGR1792", icon: "👤", barIcon: icon1, bars: 1, newBars: [0], counts: ["24"],
-    links: ["github.com/JAGR1792"],
-    stats: [
-      { tag: "ROLE", value: "BACKEND", color: "#4a8fff" },
-      { tag: "MODE", value: "LEARN",  color: "#bf94ff" },
-    ],
-  },
-  {
-    id: "fun", label: "FUN FACT ABOUT ME", handle: "@JARG1792", href: "https://github.com/JAGR1792", icon: "☕", barIcon: icon2, bars: 5, newBars: [0, 2], counts: ["3AM", "LOFI", "CCPL", "PY", "C++"],
-    links: ["debug-mode/3am", "music/lofi", "competitive/ccpl", "learning/python", "learning/cpp"],
-    stats: [
-      { tag: "FUEL", value: "COFFEE", color: "#e1306c" },
-      { tag: "VIBE", value: "LOFI",  color: "#f77737" },
-    ],
-  },
-  {
-    id: "weird", label: "WEIRD FACT ABOUT ME", handle: "@JARG1792", href: "https://github.com/JAGR1792", icon: "⚡", barIcon: icon3, bars: 7, newBars: [1, 3, 6], counts: ["PY", "C++", "RUST", "API", "SQL", "DEBUG", "RUN"],
-    links: ["learning/python", "learning/cpp", "future/rust", "backend/api", "backend/sql", "quality/debugging", "hobby/running"],
-    stats: [
-      { tag: "FOCUS", value: "PY+C++", color: "#00f2ea" },
-      { tag: "RUST", value: "FUTURE",  color: "#ff0050" },
-    ],
-  },
 ];
 
 export default function AboutMe() {
@@ -106,11 +45,11 @@ export default function AboutMe() {
       {revealed && (
         <div key={`panel-${active}`} className={`sc-reveal-panel${mounted ? " mounted" : ""}`}>
           <div className="sc-reveal-upper-bar">
-            {REVEAL_CONTENT[active].upper.map((line) => (
+            {ABOUT_REVEAL_CONTENT[active].upper.map((line) => (
               <div className="sc-reveal-upper-line" key={line}>{line}</div>
             ))}
           </div>
-          <div className="sc-reveal-lower-bar">{REVEAL_CONTENT[active].lower}</div>
+          <div className="sc-reveal-lower-bar">{ABOUT_REVEAL_CONTENT[active].lower}</div>
         </div>
       )}
       {revealed && (
@@ -126,7 +65,7 @@ export default function AboutMe() {
         <div key={`portrait-${active}`} className={`sc-main-portrait-shell${mounted ? " mounted" : ""}`}>
           <img
             className="sc-main-portrait"
-            src={MAIN_IMAGES[active]}
+            src={ABOUT_MAIN_IMAGES[active]}
             alt=""
           />
         </div>
@@ -627,7 +566,7 @@ export default function AboutMe() {
           >
             <div className="sc-bar-red" />
             <div className="sc-bar">
-              <img className="sc-char" src={CHARS[i]} alt="" />
+              <img className="sc-char" src={ABOUT_CHAR_IMAGES[i]} alt="" />
               <div className="sc-bar-fill" />
               <div className="sc-bar-shade" />
               <div className="sc-bar-content">

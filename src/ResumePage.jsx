@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { EDUCATION_ROWS, RESUME_ITEMS, SIDE_PROJECT_ITEMS } from "./siteData";
 
-const ITEMS = [
-  { id: "i", badge: "I", title: "EDUCATION", subtitle: "CCIA / Continuous Learning", rank: 4 },
-  { id: "ii", badge: "II", title: "SKILLS", subtitle: "Python / C++ / Problem Solving", rank: 5 },
-  { id: "iii", badge: "III", title: "PROJECTS", subtitle: "Pokedex / Didasko / Micelio", rank: 5 },
-  { id: "iv", badge: "IV", title: "FOCUS", subtitle: "Backend / APIs / SQL", rank: 4 },
-];
+const PROJECT_SUBTITLE = SIDE_PROJECT_ITEMS.filter((item) => item.id !== "credits").map((item) => item.title).join(" / ");
 
-const EDUCATION_ROWS = [
-  { index: "01", title: "CCIA", status: "Active" },
-  { index: "02", title: "Backend Practice", status: "Daily" },
-  { index: "03", title: "Python + C++", status: "Learning" },
-  { index: "04", title: "Rust", status: "Future" },
-];
+const ITEMS = RESUME_ITEMS.map((item) => (item.id === "iii" ? { ...item, subtitle: PROJECT_SUBTITLE } : item));
 
 export default function ResumePage({ src }) {
   const navigate = useNavigate();

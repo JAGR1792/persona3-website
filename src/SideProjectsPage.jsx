@@ -1,37 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgVideo from "./assets/main1.mp4";
+import { SIDE_PROJECT_ITEMS } from "./siteData";
 
-const ITEMS = [
-  {
-    id: "pokedex",
-    title: "POKEDEX",
-    stack: "Python / API",
-    summary: "Proyecto de exploracion de datos Pokemon con enfoque backend.",
-    href: "https://github.com/SKing25/Pokedex",
-  },
-  {
-    id: "didasko",
-    title: "DIDASKO",
-    stack: "Python / Backend",
-    summary: "Proyecto orientado a logica, estructura y crecimiento modular.",
-    href: "https://github.com/JAGR1792/Didasko",
-  },
-  {
-    id: "micelio",
-    title: "MICELIO",
-    stack: "C++ / Systems",
-    summary: "Proyecto para practicar arquitectura, rendimiento y control fino.",
-    href: "https://github.com/JAGR1792/Micelio",
-  },
-  {
-    id: "credits",
-    title: "SPECIAL THANKS",
-    stack: "Original inspiration",
-    summary: "Gracias a blairxu13 por el repo base que sirvio como punto de partida.",
-    href: "https://github.com/blairxu13/persona3-website",
-  },
-];
+const ITEMS = SIDE_PROJECT_ITEMS;
 
 export default function SideProjectsPage() {
   const navigate = useNavigate();

@@ -12,6 +12,7 @@ import PageTransition from './PageTransition'
 import Socials from './Socials'
 import AboutMe from './AboutMe'
 import SideProjectsPage from './SideProjectsPage'
+import { PROFILE } from './siteData'
 import './App.css'
 
 const BGM_STATE_KEY = 'p3-bgm-enabled'
@@ -172,7 +173,7 @@ function MenuScreen() {
 
   const handleNavigate = (page) => {
     if (page === 'github') {
-      window.open('https://github.com/JAGR1792', '_blank', 'noopener,noreferrer')
+      window.open(PROFILE.githubUrl, '_blank', 'noopener,noreferrer')
       return
     }
     navigate(`/${page}`)

@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import char1 from "./assets/char1.png";
-import char2 from "./assets/char2.png";
-import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main1.mp4";
 import newsign from "./assets/newsign.png";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
-
-const CHARS = [char1, char2, char3];
+import { SOCIAL_ITEMS, ABOUT_CHAR_IMAGES } from "./siteData";
 
 const ROLES = [
   { text: "LEADER", color: "#e8c100", bg: "rgba(232,193,0,0.12)", border: "rgba(232,193,0,0.5)" },
@@ -17,32 +10,7 @@ const ROLES = [
   { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
 ];
 
-const ITEMS = [
-  {
-    id: "github", label: "GITHUB", handle: "@JAGR1792", href: "https://github.com/JAGR1792", icon: "💻", barIcon: icon1, bars: 3, newBars: [0], counts: ["POKEDEX", "DIDASKO", "MICELIO"],
-    links: ["github.com/SKing25/Pokedex", "github.com/JAGR1792/Didasko", "github.com/JAGR1792/Micelio"],
-    stats: [
-      { tag: "USR", value: "JAGR1792", color: "#9147ff" },
-      { tag: "TOP", value: "PROJECTS",  color: "#bf94ff" },
-    ],
-  },
-  {
-    id: "playlist", label: "PLAYLIST", handle: "youtube music", href: "https://music.youtube.com/playlist?list=PLjt39ieLaAuax60RJf8imPYY58AZXVCL4", icon: "🎵", barIcon: icon2, bars: 2, newBars: [1], counts: ["LOFI", "FOCUS"],
-    links: ["music.youtube.com/playlist?list=PLjt39ieLaAuax60RJf8imPYY58AZXVCL4", "music.youtube.com"],
-    stats: [
-      { tag: "MOOD", value: "LO-FI", color: "#e1306c" },
-      { tag: "FLOW", value: "DEEP",  color: "#f77737" },
-    ],
-  },
-  {
-    id: "codewars", label: "CODEWARS", handle: "competitive mode", href: "https://www.codewars.com", icon: "⚔️", barIcon: icon3, bars: 3, newBars: [2], counts: ["KATAS", "RANK", "BATTLES"],
-    links: ["codewars.com", "codewars.com/dashboard", "codewars.com/kata/latest"],
-    stats: [
-      { tag: "MODE", value: "RANKED", color: "#00f2ea" },
-      { tag: "TIME", value: "3AM",  color: "#ff0050" },
-    ],
-  },
-];
+const ITEMS = SOCIAL_ITEMS;
 
 export default function Socials() {
   const [active, setActive]               = useState(0);
@@ -529,7 +497,7 @@ export default function Socials() {
           >
             <div className="sc-bar-red" />
             <div className="sc-bar">
-              <img className="sc-char" src={CHARS[i]} alt="" />
+              <img className="sc-char" src={ABOUT_CHAR_IMAGES[i]} alt="" />
               <div className="sc-bar-fill" />
               <div className="sc-bar-shade" />
               <div className="sc-bar-content">
