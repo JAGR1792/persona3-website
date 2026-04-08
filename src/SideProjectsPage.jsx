@@ -8,7 +8,7 @@ const ITEMS = [
     title: "POKEDEX",
     stack: "Python / API",
     summary: "Proyecto de exploracion de datos Pokemon con enfoque backend.",
-    href: "https://github.com/JAGR1792/Pokedex",
+    href: "https://github.com/SKing25/Pokedex",
   },
   {
     id: "didasko",
@@ -29,7 +29,7 @@ const ITEMS = [
     title: "SPECIAL THANKS",
     stack: "Original inspiration",
     summary: "Gracias a blairxu13 por el repo base que sirvio como punto de partida.",
-    href: "https://github.com/blairxu13/persona3-website/projects",
+    href: "https://github.com/blairxu13/persona3-website",
   },
 ];
 

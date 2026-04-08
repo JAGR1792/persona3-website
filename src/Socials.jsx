@@ -20,7 +20,7 @@ const ROLES = [
 const ITEMS = [
   {
     id: "github", label: "GITHUB", handle: "@JAGR1792", href: "https://github.com/JAGR1792", icon: "💻", barIcon: icon1, bars: 3, newBars: [0], counts: ["POKEDEX", "DIDASKO", "MICELIO"],
-    links: ["github.com/JAGR1792/Pokedex", "github.com/JAGR1792/Didasko", "github.com/JAGR1792/Micelio"],
+    links: ["github.com/SKing25/Pokedex", "github.com/JAGR1792/Didasko", "github.com/JAGR1792/Micelio"],
     stats: [
       { tag: "USR", value: "JAGR1792", color: "#9147ff" },
       { tag: "TOP", value: "PROJECTS",  color: "#bf94ff" },
